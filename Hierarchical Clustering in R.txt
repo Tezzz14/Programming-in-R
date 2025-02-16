@@ -1,0 +1,17 @@
+library(ggplot2)
+data(iris)
+scaled_data <- scale(iris[, -5])  # Excluding the 'Species' column
+dist_matrix <- dist(scaled_data)
+hclust_result <- hclust(dist_matrix, method = "complete")
+
+# Plot the dendrogram
+plot(hclust_result, main = "Hierarchical Clustering of Iris Dataset", xlab = "Samples", ylab = "Height")
+# Cut the dendrogram to create clusters (e.g., 3 clusters)
+clusters <- cutree(hclust_result, k = 3)
+# Output cluster sizes
+cat("Cluster sizes:\n")
+print(table(clusters))  # Print cluster sizes
+# Cluster centroids (mean values of the clusters)
+cat("\nCluster centroids (mean values):\n")
+cluster_centroids <- aggregate(scaled_data, by = list(cluster = clusters), FUN = mean)
+print(cluster_centroids)

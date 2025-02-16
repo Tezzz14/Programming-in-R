@@ -1,0 +1,25 @@
+library(ggplot2)
+data(iris)
+variance_sepal_length <- var(iris$Sepal.Length)
+variance_sepal_width <- var(iris$Sepal.Width)
+
+cat("Variance of Sepal.Length:", variance_sepal_length, "\n")
+cat("Variance of Sepal.Width:", variance_sepal_width, "\n")
+
+# Compute the covariance between Sepal.Length and Sepal.Width
+covariance <- cov(iris$Sepal.Length, iris$Sepal.Width)
+
+cat("Covariance between Sepal.Length and Sepal.Width:", covariance, "\n")
+
+correlation <- cor(iris$Sepal.Length, iris$Sepal.Width)
+
+cat("Correlation between Sepal.Length and Sepal.Width:", correlation, "\n")
+
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(color = "blue") +
+  labs(
+    title = "Scatter plot of Sepal.Length vs Sepal.Width",
+    x = "Sepal Length",
+    y = "Sepal Width"
+  ) +
+  theme_minimal()

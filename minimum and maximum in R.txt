@@ -1,0 +1,16 @@
+lst <- c()
+
+n <- as.integer(readline(prompt = "Enter the number of integers: "))
+
+cat("Enter", n, "numbers:\n")
+
+i <- 1
+while(i <= n) {
+ 
+  x <- as.integer(readline(prompt = paste("Enter number", i, ": ")))
+  lst[i] <- x  
+  i <- i + 1  
+}
+
+cat("Maximum value:", max(lst), "\n")
+cat("Minimum value:", min(lst), "\n")

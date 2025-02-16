@@ -1,0 +1,5 @@
+num = as.integer(readline("Enter the number: "))
+for(i in 1:10) {
+  result = num * i
+  print(paste(num, "x", i, "=", result))
+}

@@ -1,0 +1,13 @@
+data(iris)
+model = lm(Sepal.Length ~ Petal.Length, data = iris)
+summary(model)
+plot(iris$Petal.Length, iris$Sepal.Length, main = "Linear Regression: Sepal.Length vs Petal.Length",
+     xlab = "Petal Length", ylab = "Sepal Length", pch = 19)
+abline(model, col = "red")
+predictions = predict(model, newdata = iris)
+mse = mean((iris$Sepal.Length - predictions)^2)
+cat("Mean Squared Error (MSE):", mse, "\n")
+rsq = summary(model)$r.squared
+cat("R-squared:", rsq, "\n")
+rmse = sqrt(mse)
+cat("Root Mean Squared Error (RMSE):", rmse, "\n")
